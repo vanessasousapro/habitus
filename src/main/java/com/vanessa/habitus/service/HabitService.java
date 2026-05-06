@@ -1,5 +1,6 @@
 package com.vanessa.habitus.service;
 
+import com.vanessa.habitus.exception.ResourceNotFoundException;
 import com.vanessa.habitus.model.Habit;
 import com.vanessa.habitus.repository.HabitRepository;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class HabitService {
 
     public Habit findById(Long id) {
         return habitRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Habit not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Habit not found"));
         }
 
         public Habit update(Long id, Habit habit) {

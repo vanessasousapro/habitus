@@ -1,5 +1,6 @@
 package com.vanessa.habitus.service;
 
+import com.vanessa.habitus.exception.ResourceNotFoundException;
 import com.vanessa.habitus.model.User;
 import com.vanessa.habitus.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class UserService {
 
     public User findById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     public User update(Long id, User user) {
